@@ -1,0 +1,16 @@
+pt-BR:
+  inactive_or_inexistent_product: Produto inativo ou inexistente
+  activerecord:
+    models:
+      product: Produtos
+    attributes:
+      product:
+        name: Nome
+        brand: Marca
+        description: Descrição
+        sku: SKU
+        width: Largura
+        height: Altura
+        depth: Profundidade
+        weight: Peso
+        status: Status

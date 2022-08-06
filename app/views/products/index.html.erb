@@ -1,11 +1,15 @@
 <section>
   <div>
-    <% @products.each do |product| %>
-      <div>
-        <h2><%= product.name %> <%= product.brand %></h2>
-        <p><%= product.description %></p>
-        <p><%= product.price %></p>
-      </div>
+    <% if @products.any? %>
+      <% @products.each do |product| %>
+        <div>
+          <h2><%=link_to product.name, product %> <%= product.brand %></h2>
+          <p><%= product.description %></p>
+          <p><%= product.price %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Não existem produtos</p>
     <% end %>
   </div>
 </section>

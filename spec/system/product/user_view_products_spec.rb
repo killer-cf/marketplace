@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'admin sees products' do
+describe 'visitor sees all products' do
   it 'from initial screen' do
     product1 = create :product
     product2 = create :product
@@ -13,5 +13,11 @@ describe 'admin sees products' do
     expect(page).to have_content product2.name
     expect(page).to have_content product2.brand
     expect(page).to have_content product2.price
+  end
+
+  it 'and theres no products' do
+    visit root_path
+
+    expect(page).to have_content 'Não existem produtos'
   end
 end
