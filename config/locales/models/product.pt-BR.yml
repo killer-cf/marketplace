@@ -1,5 +1,6 @@
 pt-BR:
   inactive_or_inexistent_product: Produto inativo ou inexistente
+  product_created: Produto criado com sucesso
   activerecord:
     models:
       product: Produtos
@@ -8,6 +9,7 @@ pt-BR:
         name: Nome
         brand: Marca
         description: Descrição
+        price: Preço
         sku: SKU
         width: Largura
         height: Altura

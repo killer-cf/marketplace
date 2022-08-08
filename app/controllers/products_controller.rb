@@ -7,9 +7,26 @@ class ProductsController < ApplicationController
 
   def show; end
 
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to @product, notice: t('product_created')
+    else
+      render :new
+    end
+  end
+
   def set_product
     @product = Product.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, notice: t('inactive_or_inexistent_product')
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :description, :price, :brand, :width, :height, :depth, :weight)
   end
 end

@@ -1,0 +1,47 @@
+<section>
+  <%= form_with model: @product do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.number_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :brand %>
+      <%= f.number_field :brand %>
+    </div>
+
+    <div>
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.number_field :description %>
+    </div>
+
+    <div>
+      <%= f.label :width %>
+      <%= f.number_field :width %>
+    </div>
+
+    <div>
+      <%= f.label :height %>
+      <%= f.number_field :height %>
+    </div>
+
+    <div>
+      <%= f.label :depth %>
+      <%= f.number_field :depth %>
+    </div>
+
+    <div>
+      <%= f.label :weight %>
+      <%= f.number_field :weight %>
+    </div>
+
+    <div>
+      <%= f.submit 'Cadastrar' %>
+    </div>
+  <% end %>
+</section>

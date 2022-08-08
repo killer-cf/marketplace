@@ -10,7 +10,7 @@ describe 'visitor sees product details' do
     expect(page).to have_content product.name
     expect(page).to have_content "Marca: #{product.brand}"
     expect(page).to have_content product.description
-    expect(page).to have_content "Dimensões: #{product.width} x #{product.height} x #{product.depth}"
+    expect(page).to have_content "Dimenções: #{product.width} x #{product.height} x #{product.depth}"
     expect(page).to have_content "Peso: #{product.weight}"
     expect(page).to have_content 'R$ 400,00'
     expect(page).not_to have_content "Status: #{product.status}"

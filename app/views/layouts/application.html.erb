@@ -13,6 +13,11 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
+      <header>
+        <nav>
+          <div><%= link_to 'Cadastrar produto', new_product_path %></div>
+        </nav>
+      </header>
       <%= notice %>
       <%= yield %>
     </main>
