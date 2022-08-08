@@ -1,7 +1,8 @@
 pt-BR:
   inactive_or_inexistent_product: Produto inativo ou inexistente
   product_created: Produto criado com sucesso
-  product_activated_successfully: Produto ativado com secesso
+  product_activated_successfully: Produto ativado com sucesso
+  product_deactivated_successfully: Produto desativado com sucesso
   activerecord:
     models:
       product: Produtos
