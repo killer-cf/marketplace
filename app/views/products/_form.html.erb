@@ -3,41 +3,49 @@
     <div>
       <%= f.label :name %>
       <%= f.number_field :name %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:name).first if @product.errors.any? %></p>
     </div>
 
     <div>
       <%= f.label :brand %>
       <%= f.number_field :brand %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:brand).first if @product.errors.any? %></p>
     </div>
 
     <div>
       <%= f.label :price %>
       <%= f.number_field :price %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:price).first if @product.errors.any? %></p>
     </div>
 
     <div>
       <%= f.label :description %>
       <%= f.number_field :description %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:description).first if @product.errors.any? %></p>
     </div>
 
     <div>
       <%= f.label :width %>
       <%= f.number_field :width %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:width).first if @product.errors.any? %></p>
     </div>
 
     <div>
       <%= f.label :height %>
       <%= f.number_field :height %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:height).first if @product.errors.any? %></p>
     </div>
 
     <div>
       <%= f.label :depth %>
       <%= f.number_field :depth %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:depth).first if @product.errors.any? %></p>
     </div>
 
     <div>
       <%= f.label :weight %>
       <%= f.number_field :weight %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:weight).first if @product.errors.any? %></p>
     </div>
 
     <div>

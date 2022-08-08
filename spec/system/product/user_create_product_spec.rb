@@ -13,6 +13,7 @@ describe 'admin create product' do
     fill_in 'Profundidade', with: '1'
     fill_in 'Peso', with: '0.2'
     click_on 'Cadastrar'
+
     expect(page).to have_content('Produto criado com sucesso')
     expect(current_path).to eq product_path(Product.last.id)
     expect(page).to have_content('Franela da Apple')
@@ -21,5 +22,19 @@ describe 'admin create product' do
     expect(page).to have_content('A franela mais cara pra fazer oque as outras tambem fazem')
     expect(page).to have_content('Dimenções: 30.0 x 60.0 x 1.0')
     expect(page).to have_content('Peso: 0.2')
+  end
+
+  it 'with blank fields' do
+    visit new_product_path
+    click_on 'Cadastrar'
+
+    expect(page).to have_content('Nome não pode ficar em branco')
+    expect(page).to have_content('Marca não pode ficar em branco')
+    expect(page).to have_content('Preço não pode ficar em branco')
+    expect(page).to have_content('Largura não pode ficar em branco')
+    expect(page).to have_content('Altura não pode ficar em branco')
+    expect(page).to have_content('Descrição não pode ficar em branco')
+    expect(page).to have_content('Profundidade não pode ficar em branco')
+    expect(page).to have_content('Peso não pode ficar em branco')
   end
 end
