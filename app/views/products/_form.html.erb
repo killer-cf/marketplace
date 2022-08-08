@@ -2,13 +2,13 @@
   <%= form_with model: @product do |f| %>
     <div>
       <%= f.label :name %>
-      <%= f.number_field :name %>
+      <%= f.text_field :name %>
       <p class=' text-red-600'><%= @product.errors.full_messages_for(:name).first if @product.errors.any? %></p>
     </div>
 
     <div>
       <%= f.label :brand %>
-      <%= f.number_field :brand %>
+      <%= f.text_field :brand %>
       <p class=' text-red-600'><%= @product.errors.full_messages_for(:brand).first if @product.errors.any? %></p>
     </div>
 
@@ -19,8 +19,14 @@
     </div>
 
     <div>
+      <%= f.label :sku %>
+      <%= f.text_field :sku %>
+      <p class=' text-red-600'><%= @product.errors.full_messages_for(:sku).first if @product.errors.any? %></p>
+    </div>
+
+    <div>
       <%= f.label :description %>
-      <%= f.number_field :description %>
+      <%= f.text_field :description %>
       <p class=' text-red-600'><%= @product.errors.full_messages_for(:description).first if @product.errors.any? %></p>
     </div>
 

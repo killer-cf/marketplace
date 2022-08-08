@@ -8,6 +8,7 @@ describe 'visitor sees product details' do
     click_on product.name
 
     expect(page).to have_content product.name
+    expect(page).to have_content product.sku
     expect(page).to have_content "Marca: #{product.brand}"
     expect(page).to have_content product.description
     expect(page).to have_content "Dimenções: #{product.width} x #{product.height} x #{product.depth}"

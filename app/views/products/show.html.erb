@@ -4,6 +4,7 @@
         <div>
           <h2><%=link_to @product.name, @product %> <%= @product.brand %></h2>
           <h4><%= number_to_currency(@product.price, unit: 'R$ ') %></h4>
+          <p>SKU: <%= @product.sku %></p>
           <p><%= @product.description %></p>
           <p>Marca: <%= @product.brand %></p>
           <p>Dimenções: <%= @product.width %> x <%= @product.height %> x <%= @product.depth %></p>
