@@ -1,6 +1,7 @@
 pt-BR:
   inactive_or_inexistent_product: Produto inativo ou inexistente
   product_created: Produto criado com sucesso
+  product_activated_successfully: Produto ativado com secesso
   activerecord:
     models:
       product: Produtos
@@ -16,3 +17,6 @@ pt-BR:
         depth: Profundidade
         weight: Peso
         status: Status
+      product/status:
+        active: Ativo
+        inactive: Inativo

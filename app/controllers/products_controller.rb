@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: :show
+  before_action :set_product, only: %i[show activate]
 
   def index
     @products = Product.all
@@ -18,6 +18,11 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def activate
+    @product.active!
+    redirect_to @product, notice: t('product_activated_successfully')
   end
 
   def set_product

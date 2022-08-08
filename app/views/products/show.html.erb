@@ -9,7 +9,9 @@
           <p>Marca: <%= @product.brand %></p>
           <p>Dimenções: <%= @product.width %> x <%= @product.height %> x <%= @product.depth %></p>
           <p>Peso: <%= @product.weight %></p>
+          <p>Status: <%= Product.human_attribute_name("status.#{@product.status}") %></p>
         </div>
+        <div><%= button_to 'Ativar', activate_product_path(@product) %></div>
     <% end %>
   </div>
 </section>
