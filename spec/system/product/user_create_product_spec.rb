@@ -8,7 +8,7 @@ describe 'admin create product' do
     fill_in 'Marca', with: 'Apple'
     fill_in 'Descrição', with: 'A franela mais cara pra fazer oque as outras tambem fazem'
     fill_in 'Preço', with: '300'
-    fill_in 'SKU', with: 'PLD3000'
+    fill_in 'SKU', with: 'PLD3000346'
     fill_in 'Largura', with: '30'
     fill_in 'Altura', with: '60'
     fill_in 'Profundidade', with: '1'

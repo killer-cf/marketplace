@@ -22,6 +22,8 @@ RSpec.describe Product, type: :model do
 
     it { is_expected.to validate_uniqueness_of(:sku) }
 
+    it { is_expected.to validate_length_of(:sku).is_equal_to(10) }
+
     it { is_expected.to validate_numericality_of(:height).is_greater_than(0.0) }
 
     it { is_expected.to validate_numericality_of(:weight).is_greater_than(0.0) }
