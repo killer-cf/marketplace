@@ -6,6 +6,13 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <p class=' text-red-600'><%= resource.errors.full_messages_for(:weight).first if resource.errors.any? %></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+    <p class=' text-red-600'><%= resource.errors.full_messages_for(:weight).first if resource.errors.any? %></p>
   </div>
 
   <div class="field">
@@ -14,15 +21,17 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <p class=' text-red-600'><%= resource.errors.full_messages_for(:weight).first if resource.errors.any? %></p>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <p class=' text-red-600'><%= resource.errors.full_messages_for(:weight).first if resource.errors.any? %></p>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Registrar" %>
   </div>
 <% end %>
 

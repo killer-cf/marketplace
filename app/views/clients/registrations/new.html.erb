@@ -22,8 +22,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Entrar" %>
   </div>
 <% end %>
+
+<%= link_to 'Entrar como administrador', new_admin_session_path %>
 
 <%= render "clients/shared/links" %>
