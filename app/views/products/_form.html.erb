@@ -55,6 +55,11 @@
     </div>
 
     <div>
+      <%= f.label :photos %>
+      <%= f.file_field :photos, multiple: true %>
+    </div>
+
+    <div>
       <%= f.submit 'Cadastrar' %>
     </div>
   <% end %>

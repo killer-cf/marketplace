@@ -18,6 +18,7 @@ pt-BR:
         depth: Profundidade
         weight: Peso
         status: Status
+        photos: Fotos
       product/status:
         active: Ativo
         inactive: Inativo
