@@ -18,7 +18,8 @@
           <div><%= link_to 'Cadastrar produto', new_product_path %></div>
         </nav>
       </header>
-      <%= notice %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
   </body>
