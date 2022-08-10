@@ -25,6 +25,7 @@ describe 'admin create product' do
     expect(page).to have_content('A franela mais cara pra fazer oque as outras tambem fazem')
     expect(page).to have_content('Dimenções: 30.0 x 60.0 x 1.0')
     expect(page).to have_content('Peso: 0.2')
+    expect(page).to have_css("img[src*='iphone-13-1.jpg']")
     expect(Product.last.photos.count).to eq 2
   end
 
