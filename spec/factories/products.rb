@@ -12,5 +12,9 @@ FactoryBot.define do
     depth { Faker::Number.decimal(l_digits: 2) }
     weight { Faker::Number.decimal(l_digits: 2) }
     status { 1 }
+    after(:build) do |product|
+      product.photos.attach(io: File.open(Rails.root.join('spec/support/files/iphone-13-1.jpg')),
+                            filename: 'iphone-13-1.jpeg', content_type: 'image/jpeg')
+    end
   end
 end
