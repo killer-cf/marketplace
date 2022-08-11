@@ -10,4 +10,10 @@ class PendingAdminsController < ApplicationController
     @admin.approved!
     redirect_to pending_admins_path
   end
+
+  def reject
+    @admin = Admin.find(params[:id])
+    @admin.rejected!
+    redirect_to pending_admins_path
+  end
 end

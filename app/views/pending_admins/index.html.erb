@@ -19,6 +19,9 @@
               <%= button_to "Aprovar", approve_pending_admin_path(admin.id), class: 'btn-primary' %>
             </div>
 
+            <div class="flex flex-col sm:justify-center items-center">
+              <%= button_to "Rejeitar", reject_pending_admin_path(admin.id), class: 'btn-primary' %>
+            </div>
           </div>
         <% end %>
       <% else %>
