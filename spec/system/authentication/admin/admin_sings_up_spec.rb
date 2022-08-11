@@ -3,7 +3,8 @@ require 'rails_helper'
 describe 'admin sings up' do
   it 'success' do
     visit root_path
-    click_on 'Registrar novo admin'
+    click_on 'Entrar'
+    click_on 'Registrar-se'
 
     fill_in 'Nome', with: 'Kilder'
     fill_in 'E-mail', with: 'kilder@example.com'
