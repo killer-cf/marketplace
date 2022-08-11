@@ -5,7 +5,6 @@ describe 'admin sings up' do
     visit root_path
     click_on 'Entrar'
     click_on 'Registrar-se'
-
     fill_in 'Nome', with: 'Kilder'
     fill_in 'E-mail', with: 'kilder@example.com'
     fill_in 'Senha', with: 'password'
@@ -20,7 +19,6 @@ describe 'admin sings up' do
 
   it 'with blank fields' do
     visit new_admin_registration_path
-
     fill_in 'Nome', with: ''
     fill_in 'E-mail', with: ''
     fill_in 'Senha', with: ''
@@ -35,7 +33,6 @@ describe 'admin sings up' do
 
   it 'with incorrect fields' do
     visit new_admin_registration_path
-
     fill_in 'Nome', with: 'kilder'
     fill_in 'E-mail', with: 'kilderexample.com'
     fill_in 'Senha', with: '123'
