@@ -9,4 +9,10 @@ Rails.application.routes.draw do
       post 'deactivate'
     end
   end
+  resources :pending_admins, only: :index do
+    member do
+      post 'approve'
+      post 'reject'
+    end
+  end
 end

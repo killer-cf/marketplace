@@ -5,6 +5,6 @@ FactoryBot.define do
     name { Faker::Name.first_name }
     email { Faker::Internet.email }
     password { 'password' }
-    approved { true }
+    status { :approved }
   end
 end

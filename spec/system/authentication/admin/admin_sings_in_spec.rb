@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'admin sings in' do
   it 'success' do
-    create :admin, name: 'Kilder', email: 'kilder@example.com', approved: true
+    create :admin, name: 'Kilder', email: 'kilder@example.com'
 
     visit root_path
     click_on 'Entrar'
@@ -17,7 +17,7 @@ describe 'admin sings in' do
   end
 
   it 'with blank fields' do
-    create :admin, name: 'Kilder', email: 'kilder@example.com', approved: true
+    create :admin, name: 'Kilder', email: 'kilder@example.com'
 
     visit root_path
     click_on 'Entrar'
@@ -30,7 +30,7 @@ describe 'admin sings in' do
   end
 
   it 'with incorrect fields' do
-    create :admin, name: 'Kilder', email: 'kilder@example.com', approved: true
+    create :admin, name: 'Kilder', email: 'kilder@example.com'
 
     visit new_admin_session_path
     fill_in 'E-mail', with: 'kilderexample.com'

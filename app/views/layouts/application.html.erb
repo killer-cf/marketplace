@@ -18,6 +18,7 @@
           <div><%= link_to 'Cadastrar produto', new_product_path %></div>
           <%= link_to 'Registrar novo admin', new_admin_registration_path %>
           <% if admin_signed_in? %>
+            <%= link_to 'Admins pendentes', pending_admins_path %>
             <%= current_admin.name %> | <%= current_admin.email %>
             <%= link_to 'Sair', destroy_admin_session_path, method: 'delete'%>
           <% else %>
