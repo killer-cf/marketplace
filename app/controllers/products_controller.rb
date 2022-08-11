@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show activate deactivate]
 
   def index
-    @products = Product.all
+    @products = admin_signed_in? ? Product.all : Product.active
   end
 
   def show; end

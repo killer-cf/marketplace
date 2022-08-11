@@ -3,7 +3,9 @@ require 'rails_helper'
 describe 'admin changes products status' do
   it 'to active' do
     product = create :product, status: :inactive
+    admin = create :admin
 
+    login_as admin, scope: :admin
     visit root_path
     click_on product.name
     click_on 'Ativar'
@@ -17,7 +19,9 @@ describe 'admin changes products status' do
 
   it 'to inactive' do
     product = create :product, status: :active
+    admin = create :admin
 
+    login_as admin, scope: :admin
     visit root_path
     click_on product.name
     click_on 'Desativar'
