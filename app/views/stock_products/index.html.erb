@@ -1,0 +1,15 @@
+<section>
+  <div>
+    <%= @products.each do |product| %>
+      <div>
+        <%= product.name %>
+        <p><%= product.stock_products.count %> unidades</p>
+        <%= form_with url: increase_stock_product_path(product) do |f| %>
+          <%= f.label 'Quantidade' %>
+          <%= f.number_field 'query' %>
+          <%= f.submit 'Adicionar ao estoque' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>

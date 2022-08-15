@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show activate deactivate]
+  before_action :set_product, only: %i[show activate deactivate increase_stock]
 
   def index
     @products = admin_signed_in? ? Product.all : Product.active
@@ -30,6 +30,12 @@ class ProductsController < ApplicationController
   def deactivate
     @product.inactive!
     redirect_to @product, notice: t('product_deactivated_successfully')
+  end
+
+  def increase_stock
+    quantity = params[:query].to_i
+    quantity.times { StockProduct.create!(product: @product) }
+    redirect_to stock_products_path
   end
 
   def set_product

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       post 'activate'
       post 'deactivate'
+      post 'increase_stock'
     end
   end
   resources :pending_admins, only: :index do
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
       post 'reject'
     end
   end
+  resources :stock_products, only: :index 
 end
