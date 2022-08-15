@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'visitor sees product details' do
   it 'from initial screen' do
     product = create :product, price: 400.0
+    3.times { create :stock_product, product: }
 
     visit root_path
     click_on product.name
@@ -10,6 +11,7 @@ describe 'visitor sees product details' do
     expect(page).to have_content product.name
     expect(page).to have_content product.sku
     expect(page).to have_content "Marca: #{product.brand}"
+    expect(page).to have_content '3 unidades disponiveis'
     expect(page).to have_content product.description
     expect(page).to have_content "Dimenções: #{product.width} x #{product.height} x #{product.depth}"
     expect(page).to have_content "Peso: #{product.weight}"

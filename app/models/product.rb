@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   enum status: { inactive: 0, active: 1 }
 
   has_many_attached :photos
+  has_many :stock_products
 
   validates :name, :brand, :price, :description, :width, :height, :depth, :weight, :sku, presence: true
   validates :width, :height, :depth, :weight, :price, numericality: { greater_than: 0.0 }

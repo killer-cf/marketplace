@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
     @products = admin_signed_in? ? Product.all : Product.active
   end
 
-  def show; end
+  def show
+    @product_stock = @product.stock_products.count
+  end
 
   def new
     @product = Product.new
