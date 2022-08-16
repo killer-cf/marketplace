@@ -7,7 +7,7 @@
           <%= link_to(image_tag(product_item.product.photos.last, style: 'height:50%;width:100%;max-width:500px;object-fit:cover;'), product_path(product_item.product)) if product_item.product.photos.attached? %>
           <p><%= product_item.product.description %></p>
           <p class='font-bold'>Preço: <%= number_to_currency(product_item.product.price, unit: 'R$ ') %></p>
-          <p><%= product_item.quantity %></p>
+          <p class='item_quantity'><%= product_item.quantity %></p>
         </div>
       <% end %>
     <% else %>

@@ -27,5 +27,22 @@ describe 'client add product to shopping_cart' do
     expect(page).to have_content 'Produto adicionado ao carrinho'
     expect(page).to have_content 'Memoria RAM 8GB'
     expect(page).to have_content 'Preço: R$ 170,00'
+    expect(page.find('.item_quantity')).to have_content '1'
+  end
+
+  it 'and not duplicate items' do
+    client = create :client
+    product = create :product, name: 'Memoria RAM 8GB', brand: 'Kingspec', price: 170
+
+    login_as client, scope: :client
+    visit root_path
+    click_on 'Memoria RAM 8GB'
+    click_on 'Adicionar ao carrinho'
+    visit product_path(product)
+    click_on 'Adicionar ao carrinho'
+
+    expect(page).to have_content 'Memoria RAM 8GB'
+    expect(page).to have_content 'Preço: R$ 170,00'
+    expect(page.find('.item_quantity')).to have_content '2'
   end
 end
