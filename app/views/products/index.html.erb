@@ -1,12 +1,12 @@
-<section>
-  <div>
+<section class='container'>
+  <div class=' w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-[1200px]'>
     <% if @products.any? %>
       <% @products.each do |product| %>
-        <div id=<%= product.name.split(' ').join('-')%>>
+        <div id=<%= product.name.split(' ').join('-')%> class=' max-w-[300px]'>
           <h2><%=link_to product.name, product %> <%= product.brand %></h2>
-          <%= link_to(image_tag(product.photos.last, style: 'height:50%;width:100%;object-fit:cover;'), product_path(product)) if product.photos.attached? %>
+          <%= link_to(image_tag(product.photos.last, style: 'height:50%;width:100%;max-width:500px;object-fit:cover;'), product_path(product)) if product.photos.attached? %>
           <p><%= product.description %></p>
-          <p><%= number_to_currency(product.price, unit: 'R$ ') %></p>
+          <p class='font-bold'><%= number_to_currency(product.price, unit: 'R$ ') %></p>
         </div>
       <% end %>
     <% else %>
