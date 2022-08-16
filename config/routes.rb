@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post 'deactivate'
       post 'increase_stock'
     end
+    resources :product_items, only: :create
   end
   resources :pending_admins, only: :index do
     member do
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
       post 'reject'
     end
   end
-  resources :stock_products, only: :index 
+  resources :stock_products, only: :index
+  get :shopping_cart, to: 'shopping_cart#index'
 end

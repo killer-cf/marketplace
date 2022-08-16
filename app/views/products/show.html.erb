@@ -2,9 +2,10 @@
   <div>
     <% if @product %>
         <div>
-          <%= image_tag(@product.photos.last, style: 'height:50%;width:100%;object-fit:cover;') if @product.photos.attached? %>  
+          <%= image_tag(@product.photos.last, style: 'height:50%;width:100%;object-fit:cover;') if @product.photos.attached? %>
           <h2><%=link_to @product.name, @product %> <%= @product.brand %></h2>
           <h4><%= number_to_currency(@product.price, unit: 'R$ ') %></h4>
+          <%= button_to 'Adicionar ao carrinho', product_product_items_path(@product.id) %>
           <p><%= @product_stock %> unidades disponiveis</p>
           <p>SKU: <%= @product.sku %></p>
           <p><%= @product.description %></p>

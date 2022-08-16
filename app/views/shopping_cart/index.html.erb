@@ -1,0 +1,17 @@
+<section class='container'>
+  <div class=' w-full max-w-[1200px]'>
+    <% if @product_items.any? %>
+      <% @product_items.each do |product_item| %>
+        <div id=<%= product_item.product.name.split(' ').join('-')%> class=' max-w-[500px]'>
+          <h2><%=link_to product_item.product.name, product_path(product_item.product.id) %> <%= product_item.product.brand %></h2>
+          <%= link_to(image_tag(product_item.product.photos.last, style: 'height:50%;width:100%;max-width:500px;object-fit:cover;'), product_path(product_item.product)) if product_item.product.photos.attached? %>
+          <p><%= product_item.product.description %></p>
+          <p class='font-bold'>Preço: <%= number_to_currency(product_item.product.price, unit: 'R$ ') %></p>
+          <p><%= product_item.quantity %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Não há produtos no carrinho</p>
+    <% end %>
+  </div>
+</section>
