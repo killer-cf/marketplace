@@ -5,7 +5,7 @@ class ProductItemsController < ApplicationController
     product_id = params[:product_id]
     @item = ProductItem.find_by(product_id:)
     @stock = StockProduct.where(product_id:)
-    puts @stock
+
     if @stock&.any?
       ProductItemService.create_or_increment(@item, product_id, current_client)
       redirect_to shopping_cart_path, notice: 'Produto adicionado ao carrinho!'
