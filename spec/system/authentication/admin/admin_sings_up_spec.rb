@@ -4,7 +4,7 @@ describe 'admin sings up' do
   it 'success' do
     visit root_path
     click_on 'Entrar'
-    click_on 'Registrar-se'
+    click_on 'Solicitar registro de adm'
     fill_in 'Nome', with: 'Kilder'
     fill_in 'E-mail', with: 'kilder@example.com'
     fill_in 'Senha', with: 'password'

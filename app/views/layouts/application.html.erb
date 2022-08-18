@@ -17,7 +17,6 @@
         <div class='flex space-x-6 items-center'>
           <p class='font-extrabold text-3xl text-blue-900'>Marketplace</p>
           <%= link_to 'Cadastrar produto', new_product_path %>
-          <%= link_to 'Registrar novo admin', new_admin_registration_path %>
           <%= link_to 'Carrinho', shopping_cart_path %>
           <% if admin_signed_in? %>
             <%= link_to 'Controle de estoque', stock_products_path %>
@@ -25,7 +24,7 @@
             <%= current_admin.name %> | <%= current_admin.email %>
             <%= link_to 'Sair', destroy_admin_session_path, method: 'delete'%>
           <% else %>
-            <%= link_to 'Entrar', new_admin_session_path, class:'text-green-600 hover:text-green-700' %>
+            <%= link_to 'Entrar', new_client_session_path, class:'text-green-600 hover:text-green-700' %>
           <% end %>
         </div>
       </nav>

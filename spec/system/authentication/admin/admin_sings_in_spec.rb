@@ -6,6 +6,7 @@ describe 'admin sings in' do
 
     visit root_path
     click_on 'Entrar'
+    click_on 'Entrar como adm'
     fill_in 'E-mail', with: 'kilder@example.com'
     fill_in 'Senha', with: 'password'
     find('.actions').click_on 'Entrar'
@@ -21,6 +22,7 @@ describe 'admin sings in' do
 
     visit root_path
     click_on 'Entrar'
+    click_on 'Entrar como adm'
     fill_in 'E-mail', with: ''
     fill_in 'Senha', with: ''
     find('.actions').click_on 'Entrar'
