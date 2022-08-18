@@ -9,7 +9,9 @@
             <p><%= product_item.product.description %></p>
             <p class='font-bold'>Valor unitario: <%= number_to_currency(product_item.product.price, unit: 'R$ ') %></p>
             <p class='font-bold'>Subtotal: <%= number_to_currency(product_item.subtotal, unit: 'R$ ') %></p>
+            <%= button_to '+', increment_quantity_product_product_item_path(product_item.product, product_item) %>
             <p class='item_quantity'><%= product_item.quantity %></p>
+            <%= button_to '-', decrement_quantity_product_product_item_path(product_item.product, product_item) %>
           </div>
         <% end %>
       </div>

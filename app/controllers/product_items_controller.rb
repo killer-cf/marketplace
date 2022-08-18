@@ -13,4 +13,20 @@ class ProductItemsController < ApplicationController
       redirect_to product_path(product_id)
     end
   end
+
+  def increment_quantity
+    product_id = params[:product_id]
+    @item = ProductItem.find_by(product_id:)
+    @item.quantity += 1
+    @item.save
+    redirect_to shopping_cart_path
+  end
+
+  def decrement_quantity
+    product_id = params[:product_id]
+    @item = ProductItem.find_by(product_id:)
+    @item.quantity -= 1
+    @item.save
+    redirect_to shopping_cart_path
+  end
 end

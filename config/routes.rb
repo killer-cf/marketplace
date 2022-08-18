@@ -9,7 +9,12 @@ Rails.application.routes.draw do
       post 'deactivate'
       post 'increase_stock'
     end
-    resources :product_items, only: :create
+    resources :product_items, only: :create do
+      member do
+        post 'increment_quantity'
+        post 'decrement_quantity'
+      end
+    end
   end
   resources :pending_admins, only: :index do
     member do
