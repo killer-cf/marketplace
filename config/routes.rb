@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: { registrations: 'registrations' }
-  devise_for :clients
+  devise_for :clients, controllers: { registrations: 'registrations' }
   root 'products#index'
 
   resources :products, only: %i[show new create] do
