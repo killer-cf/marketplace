@@ -28,7 +28,7 @@ describe 'client add product to shopping_cart' do
     expect(page).to have_current_path shopping_cart_path
     expect(page).to have_content 'Produto adicionado ao carrinho'
     expect(page).to have_content 'Memoria RAM 8GB'
-    expect(page).to have_content 'Preço: R$ 170,00'
+    expect(page).to have_content 'Valor unitario: R$ 170,00'
     expect(page.find('.item_quantity')).to have_content '1'
   end
 
@@ -45,7 +45,7 @@ describe 'client add product to shopping_cart' do
     click_on 'Adicionar ao carrinho'
 
     expect(page).to have_content 'Memoria RAM 8GB'
-    expect(page).to have_content 'Preço: R$ 170,00'
+    expect(page).to have_content 'Valor unitario: R$ 170,00'
     expect(page.find('.item_quantity')).to have_content '2'
   end
 
