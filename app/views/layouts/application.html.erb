@@ -17,15 +17,18 @@
         <div class='flex space-x-6 items-center'>
           <p class='font-extrabold text-3xl text-blue-900'>Marketplace</p>
           <%= link_to 'Cadastrar produto', new_product_path %>
-          <%= link_to 'Carrinho', shopping_cart_path %>
           <% if admin_signed_in? %>
             <%= link_to 'Controle de estoque', stock_products_path %>
             <%= link_to 'Admins pendentes', pending_admins_path %>
             <%= current_admin.name %> | <%= current_admin.email %>
             <%= link_to 'Sair', destroy_admin_session_path, method: 'delete'%>
+          <% elsif client_signed_in? %>
+            <%= current_client.name %> | <%= current_client.email %>
+            <%= link_to 'Sair', destroy_client_session_path, method: 'delete'%>
           <% else %>
             <%= link_to 'Entrar', new_client_session_path, class:'text-green-600 hover:text-green-700' %>
           <% end %>
+          <%= link_to 'Carrinho', shopping_cart_path %>
         </div>
       </nav>
     </header>
