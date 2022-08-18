@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show activate deactivate increase_stock]
+  before_action :authenticate_admin!, only: %i[create]
 
   def index
     @products = admin_signed_in? ? Product.all : Product.active

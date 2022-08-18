@@ -16,8 +16,8 @@
       <nav>
         <div class='flex space-x-6 items-center'>
           <p class='font-extrabold text-3xl text-blue-900'>Marketplace</p>
-          <%= link_to 'Cadastrar produto', new_product_path %>
           <% if admin_signed_in? %>
+            <%= link_to 'Cadastrar produto', new_product_path %>
             <%= link_to 'Controle de estoque', stock_products_path %>
             <%= link_to 'Admins pendentes', pending_admins_path %>
             <%= current_admin.name %> | <%= current_admin.email %>

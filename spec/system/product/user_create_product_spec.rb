@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe 'admin create product' do
   it 'success' do
+    admin = create :admin
+
+    login_as admin, scope: :admin
     visit root_path
     click_on 'Cadastrar produto'
     fill_in 'Nome', with: 'Iphone 13'
@@ -30,6 +33,9 @@ describe 'admin create product' do
   end
 
   it 'with blank fields' do
+    admin = create :admin
+
+    login_as admin, scope: :admin
     visit new_product_path
     click_on 'Cadastrar'
 

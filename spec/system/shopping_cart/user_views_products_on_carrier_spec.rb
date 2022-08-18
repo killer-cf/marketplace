@@ -27,4 +27,16 @@ describe 'client see products' do
     end
     expect(page).to have_content 'Valor Total: R$ 800,00'
   end
+
+  it 'and there are not products in cart' do
+    product = create :product, name: 'SSD', price: 460
+    create(:stock_product, product:)
+    client = create :client
+
+    login_as client, scope: :client
+    visit root_path
+    click_on 'Carrinho'
+
+    expect(page).to have_content 'Não há produtos no carrinho'
+  end
 end
