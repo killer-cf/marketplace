@@ -17,6 +17,10 @@ class ProductItemsController < ApplicationController
   def increment_quantity
     product_id = params[:product_id]
     @item = ProductItem.find_by(product_id:)
+    if ProductItemService.check_stock(product_id, @item.quantity)
+      redirect_to shopping_cart_path, notice: 'Não há mais produtos em estoque'
+      return
+    end
     @item.quantity += 1
     @item.save
     redirect_to shopping_cart_path
