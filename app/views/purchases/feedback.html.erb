@@ -1,0 +1,11 @@
+<section>
+  <div>
+    <h1>Pedido <%= @purchase.order %> realizado com sucesso!</h1>
+    <p>Sua compra foi <%= Purchase.human_attribute_name("status.#{@purchase.status}") %>!</p>
+    <p>Pago com cartão final <%= @purchase.card_number[-4, 4] %></p>
+    <p>Total do pedido: <%= number_to_currency(@purchase.value, unit: 'R$ ') %></p>
+    <%= @purchase.product_items.each do |item| %>
+      <p><%= item.quantity %>x <%= item.product.name %></p>
+    <% end %>
+  </div>
+</section>

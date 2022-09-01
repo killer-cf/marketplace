@@ -9,4 +9,8 @@ pt-BR:
         code: Código
         valid_date: Data de validade
         cpf: CPF
+      purchase/status:
+        pending: pendente
+        approved: aprovada
+        rejected: rejeitada
 

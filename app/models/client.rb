@@ -6,4 +6,8 @@ class Client < ApplicationRecord
 
   has_many :product_items
   has_many :purchases
+
+  def cart_total_value
+    product_items.sum(&:subtotal)
+  end
 end

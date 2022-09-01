@@ -22,7 +22,9 @@ Rails.application.routes.draw do
       post 'reject'
     end
   end
-  resources :purchases, only: %i[new create]
+  resources :purchases, only: %i[new create] do
+    get :feedback, on: :member
+  end
   resources :stock_products, only: :index
   get :shopping_cart, to: 'shopping_cart#index'
 end
