@@ -1,16 +1,17 @@
 class PurchasesController < ApplicationController
   def new
     @purchase = Purchase.new
+    @card = Card.new
   end
 
   def create
     purchase = Purchase.new(purchase_params)
     if purchase.save
-      response = TransactionService.send(transaction_params, current_client.purchases.last.order)
+      response = TransactionService.send(card_params, current_client)
+      return if response.status != 201
+
       TransactionService.change_status(purchase, response)
       redirect_to feedback_purchase_path(purchase)
-    else
-
     end
   end
 
@@ -19,12 +20,13 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase).permit(:client_id, :card_number)
-          .merge(value: current_client.cart_total_value, product_items: current_client.product_items)
+    params.require(:purchase).permit(:client_id)
+          .merge(value: current_client.cart_total_value, product_items: current_client.product_items,
+                 card_number: params[:card][:number])
   end
 
-  def transaction_params
-    params.require(:purchase).permit(:code, :name, :valid_date, :cpf)
-          .merge(value: current_client.cart_total_value.to_f, number: params[:purchase][:card_number])
+  def card_params
+    params.require(:card).permit(:code, :name, :valid_date, :cpf, :number)
+          .merge(client_id: params[:purchase][:client_id])
   end
 end

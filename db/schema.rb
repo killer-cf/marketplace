@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_01_165820) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_200543) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -51,6 +51,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_165820) do
     t.integer "status", default: 5
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.string "name"
+    t.string "cpf"
+    t.string "number"
+    t.integer "code"
+    t.date "valid_date"
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_cards_on_client_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -115,6 +127,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_165820) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cards", "clients"
   add_foreign_key "product_items", "clients"
   add_foreign_key "product_items", "products"
   add_foreign_key "product_items", "purchases"

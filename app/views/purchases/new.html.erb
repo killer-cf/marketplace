@@ -1,20 +1,20 @@
 <%= form_with model: @purchase do |f| %>
   <%= f.hidden_field :client_id, value: current_client.id %>
+  <%= fields_for @card do |c| %>
+    <%= c.label :number %>
+    <%= c.text_field :number %>
 
-  <%= f.label :card_number %>
-  <%= f.text_field :card_number %>
+    <%= c.label :name %>
+    <%= c.text_field :name %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <%= c.label :code %>
+    <%= c.text_field :code %>
 
-  <%= f.label :code %>
-  <%= f.text_field :code %>
+    <%= c.label :valid_date %>
+    <%= c.date_field :valid_date %>
 
-  <%= f.label :valid_date %>
-  <%= f.date_field :valid_date %>
-
-  <%= f.label :cpf %>
-  <%= f.text_field :cpf %>
-
+    <%= c.label :cpf %>
+    <%= c.text_field :cpf %>
+  <% end %>
   <%= f.submit 'Fazer pagamento' %>
 <% end %>
