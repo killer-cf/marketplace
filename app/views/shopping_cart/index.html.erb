@@ -17,6 +17,9 @@
       </div>
       <div>
         <p>Valor Total: <%= number_to_currency(@total, unit: 'R$ ') %></p>
+        <div>
+          <%= link_to 'Ir para pagamento', new_purchase_path %>
+        </div>
       </div>
     <% else %>
       <p>Não há produtos no carrinho</p>

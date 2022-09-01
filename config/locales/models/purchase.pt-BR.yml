@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      purchase: Compra
+    attributes:
+      purchase:
+        name: Nome no cartão
+        card_number: Numero
+        code: Código
+        valid_date: Data de validade
+        cpf: CPF
+
