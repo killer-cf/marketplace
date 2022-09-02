@@ -5,14 +5,16 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    purchase = Purchase.new(purchase_params)
-    if purchase.save
-      response = TransactionService.send(card_params, current_client)
-      return if response.status != 201
+    @card = Card.new(card_params)
+    return render :new unless @card.valid?
+    return unless purchase.save
 
-      TransactionService.change_status(purchase, response)
-      redirect_to feedback_purchase_path(purchase)
-    end
+    purchase = Purchase.new(purchase_params)
+    response = TransactionService.send(card_params, current_client)
+    return if response.status != 201
+
+    TransactionService.change_status(purchase, response)
+    redirect_to feedback_purchase_path(purchase)
   end
 
   def feedback

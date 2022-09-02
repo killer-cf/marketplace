@@ -3,18 +3,24 @@
   <%= fields_for @card do |c| %>
     <%= c.label :number %>
     <%= c.text_field :number %>
+    <p><%= @card.errors.full_messages_for(:number).first if @card.errors.any? %></p>
 
     <%= c.label :name %>
     <%= c.text_field :name %>
+    <p><%= @card.errors.full_messages_for(:name).first if @card.errors.any? %></p>
 
     <%= c.label :code %>
     <%= c.text_field :code %>
+    <p><%= @card.errors.full_messages_for(:code).first if @card.errors.any? %></p>
 
     <%= c.label :valid_date %>
     <%= c.date_field :valid_date %>
+    <p><%= @card.errors.full_messages_for(:valid_date).first if @card.errors.any? %></p>
 
     <%= c.label :cpf %>
     <%= c.text_field :cpf %>
+    <p><%= @card.errors.full_messages_for(:cpf).first if @card.errors.any? %></p>
+
   <% end %>
   <%= f.submit 'Fazer pagamento' %>
 <% end %>

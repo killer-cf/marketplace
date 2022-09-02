@@ -9,9 +9,4 @@ class TransactionService
     purchase.approved! if response.body[:status] == 'accepted'
     purchase.rejected! if response.body[:status] == 'rejected'
   end
-
-  def self.card_valid?(card_params)
-    card = Card.new(card_params)
-    card.valid?
-  end
 end

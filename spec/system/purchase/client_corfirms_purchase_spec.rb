@@ -36,4 +36,48 @@ describe 'client confirm purchase' do
     expect(page).to have_content "1x #{item.product.name}"
     expect(page).to have_content "2x #{item2.product.name}"
   end
+
+  it 'with incorrects fields' do
+    client = create :client
+    product1 = create :product, price: 100
+    product2 = create :product, price: 200
+    create :product_item, product: product1, client:, quantity: 1
+    create :product_item, product: product2, client:, quantity: 2
+
+    login_as client, scope: :client
+    visit shopping_cart_path
+    click_on 'Ir para pagamento'
+    fill_in 'Nome no cartão', with: 'KILDER COSTA M FILHO'
+    fill_in 'Numero', with: '1234'
+    fill_in 'Código', with: '12'
+    fill_in 'Data de validade', with: '11/20/2030'
+    fill_in 'CPF', with: '123456'
+    click_on 'Fazer pagamento'
+
+    expect(page).not_to have_content 'Sua compra foi aprovada!'
+    expect(Purchase.count).to eq 0
+    expect(page).to have_content 'Numero não possui o tamanho esperado (16 caracteres)'
+    expect(page).to have_content 'Código não possui o tamanho esperado (3 caracteres)'
+    expect(page).to have_content 'CPF não possui o tamanho esperado (11 caracteres)'
+  end
+
+  it 'with blank fields' do
+    client = create :client
+    product1 = create :product, price: 100
+    product2 = create :product, price: 200
+    create :product_item, product: product1, client:, quantity: 1
+    create :product_item, product: product2, client:, quantity: 2
+
+    login_as client, scope: :client
+    visit shopping_cart_path
+    click_on 'Ir para pagamento'
+    click_on 'Fazer pagamento'
+
+    expect(page).not_to have_content 'Sua compra foi aprovada!'
+    expect(Purchase.count).to eq 0
+    expect(page).to have_content 'Numero não pode ficar em branco'
+    expect(page).to have_content 'Código não pode ficar em branco'
+    expect(page).to have_content 'CPF não pode ficar em branco'
+    expect(page).to have_content 'Nome no cartão não pode ficar em branco'
+  end
 end
