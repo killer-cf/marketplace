@@ -1,4 +1,6 @@
 pt-BR:
+  payment_failed: Falha ao fazer pagamento, tente novamente mais tarde!
+  invalid_card: Cartão invalido, revise os dados
   activerecord:
     models:
       purchase: Compra

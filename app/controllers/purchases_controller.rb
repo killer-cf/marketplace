@@ -15,7 +15,8 @@ class PurchasesController < ApplicationController
       TransactionService.change_status(purchase, response)
       return redirect_to feedback_purchase_path(purchase)
     end
-    redirect_to new_purchase_path, notice: 'Falha ao fazer pagamento, tente novamente mais tarde!'
+    redirect_to new_purchase_path, notice: t('payment_failed') if response&.status != 404
+    redirect_to new_purchase_path, notice: t('invalid_card') if response&.status == 404
     purchase.destroy
   end
 
