@@ -37,7 +37,7 @@ describe 'client confirm purchase' do
     expect(page).to have_content "2x #{item2.product.name}"
   end
 
-  it 'with incorrects fields' do
+  it 'with invalid fields' do
     client = create :client
     product1 = create :product, price: 100
     product2 = create :product, price: 200
@@ -79,5 +79,27 @@ describe 'client confirm purchase' do
     expect(page).to have_content 'Código não pode ficar em branco'
     expect(page).to have_content 'CPF não pode ficar em branco'
     expect(page).to have_content 'Nome no cartão não pode ficar em branco'
+  end
+
+  it 'and API is offline' do
+    client = create :client
+    product1 = create :product, price: 100
+    product2 = create :product, price: 200
+    create :product_item, product: product1, client:, quantity: 1
+    create :product_item, product: product2, client:, quantity: 2
+    allow(Faraday).to receive(:post).and_raise(Faraday::ConnectionFailed)
+
+    login_as client, scope: :client
+    visit shopping_cart_path
+    click_on 'Ir para pagamento'
+    fill_in 'Nome no cartão', with: 'KILDER COSTA M FILHO'
+    fill_in 'Numero', with: '1234567890123456'
+    fill_in 'Código', with: '123'
+    fill_in 'Data de validade', with: '11/20/2030'
+    fill_in 'CPF', with: '12345678901'
+    click_on 'Fazer pagamento'
+
+    expect(Purchase.count).to eq 0
+    expect(page).to have_content 'Falha ao fazer pagamento, tente novamente mais tarde!'
   end
 end

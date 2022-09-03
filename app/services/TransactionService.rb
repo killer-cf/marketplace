@@ -3,6 +3,8 @@ class TransactionService
     json_data = { transaction: card_params.merge(order: current_client.purchases.last.order,
                                                  value: current_client.cart_total_value.to_f) }.to_json(except: :client_id)
     Faraday.post('http://localhost:4000/api/v1/transactions', json_data, content_type: 'application/json')
+  rescue Faraday::ConnectionFailed
+    nil
   end
 
   def self.change_status(purchase, response)
