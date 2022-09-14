@@ -68,6 +68,35 @@ describe 'client confirm purchase' do
     expect(page).to have_content 'Cartão invalido, revise os dados'
   end
 
+  it 'when theres no limit on card' do
+    client = create :client
+    product1 = create :product, price: 100
+    product2 = create :product, price: 200
+    item = create :product_item, product: product1, client:, quantity: 1
+    item2 = create :product_item, product: product2, client:, quantity: 2
+    purchase_data_sent = { transaction: { code: '123', name: 'KILDER COSTA M FILHO', valid_date: '11/20/2030',
+                                          cpf: '12345678901', number: '1234567890123456',
+                                          order: 'ASDF123456', value: 500.0 } }.to_json
+    purchase_response_body = { status: 'rejected', message: nil }
+    purchase_response = instance_double Faraday::Response, status: 201, body: purchase_response_body
+    allow(Faraday).to receive(:post).with('http://localhost:4000/api/v1/transactions', purchase_data_sent,
+                                          content_type: 'application/json').and_return(purchase_response)
+    allow(SecureRandom).to receive(:alphanumeric).with(10).and_return('ASDF123456')
+
+    login_as client, scope: :client
+    visit shopping_cart_path
+    click_on 'Ir para pagamento'
+    fill_in 'Nome no cartão', with: 'KILDER COSTA M FILHO'
+    fill_in 'Numero', with: '1234567890123456'
+    fill_in 'Código', with: '123'
+    fill_in 'Data de validade', with: '11/20/2030'
+    fill_in 'CPF', with: '12345678901'
+    click_on 'Fazer pagamento'
+
+    expect(page).to have_content 'Compra rejeitada pelo banco, entre em contato com o banco ou informe outro meio de pagamento'
+    expect(Purchase.count).to eq 0
+  end
+
   it 'with invalid fields' do
     client = create :client
     product1 = create :product, price: 100
