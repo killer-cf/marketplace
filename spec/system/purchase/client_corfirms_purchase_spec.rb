@@ -10,7 +10,7 @@ describe 'client confirm purchase' do
     purchase_data_sent = { transaction: { code: '123', name: 'KILDER COSTA M FILHO', valid_date: '11/20/2030',
                                           cpf: '12345678901', number: '1234567890123456',
                                           order: 'ASDF123456', value: 500.0 } }.to_json
-    purchase_response_body = { status: 'accepted', message: nil }
+    purchase_response_body = { status: 'accepted', message: nil }.to_json
     purchase_response = instance_double Faraday::Response, status: 201, body: purchase_response_body
     allow(Faraday).to receive(:post).with('http://localhost:4000/api/v1/transactions', purchase_data_sent,
                                           content_type: 'application/json').and_return(purchase_response)
@@ -46,7 +46,7 @@ describe 'client confirm purchase' do
     purchase_data_sent = { transaction: { code: '123', name: 'KILDER COSTA M FILHO', valid_date: '11/20/2030',
                                           cpf: '12345678901', number: '1234567890123456',
                                           order: 'ASDF123456', value: 500.0 } }.to_json
-    purchase_response_body = { errors: 'Cartão invalido, revise os dados' }
+    purchase_response_body = { errors: 'Cartão invalido, revise os dados' }.to_json
     purchase_response = instance_double Faraday::Response, status: 404, body: purchase_response_body
     allow(Faraday).to receive(:post).with('http://localhost:4000/api/v1/transactions', purchase_data_sent,
                                           content_type: 'application/json').and_return(purchase_response)
@@ -77,7 +77,7 @@ describe 'client confirm purchase' do
     purchase_data_sent = { transaction: { code: '123', name: 'KILDER COSTA M FILHO', valid_date: '11/20/2030',
                                           cpf: '12345678901', number: '1234567890123456',
                                           order: 'ASDF123456', value: 500.0 } }.to_json
-    purchase_response_body = { status: 'rejected', message: nil }
+    purchase_response_body = { status: 'rejected', message: nil }.to_json
     purchase_response = instance_double Faraday::Response, status: 201, body: purchase_response_body
     allow(Faraday).to receive(:post).with('http://localhost:4000/api/v1/transactions', purchase_data_sent,
                                           content_type: 'application/json').and_return(purchase_response)

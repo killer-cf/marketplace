@@ -8,7 +8,7 @@ class TransactionService
   end
 
   def self.change_status(purchase, response)
-    purchase.approved! if response.body[:status] == 'accepted'
-    purchase.rejected! if response.body[:status] == 'rejected'
+    purchase.approved! if response['status'] == 'accepted'
+    purchase.rejected! if response['status'] == 'rejected'
   end
 end
