@@ -12,7 +12,8 @@ class PurchasesController < ApplicationController
     if response&.status == 201
       json_response = JSON.parse(response.body)
       TransactionService.change_status(purchase, json_response)
-      return redirect_to json_response['status'] != 'rejected' ? feedback_purchase_path(purchase) : new_purchase_path, notice: t('payment_rejected')
+      return redirect_to feedback_purchase_path(purchase) if json_response['status'] != 'rejected'
+      return redirect_to new_purchase_path, notice: t('payment_rejected') if json_response['status'] == 'rejected'
     end
     redirect_to new_purchase_path, notice: response&.status != 404 ? t('payment_failed') : t('invalid_card')
     purchase.destroy
