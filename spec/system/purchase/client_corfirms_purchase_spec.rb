@@ -25,9 +25,11 @@ describe 'client confirm purchase' do
     fill_in 'Data de validade', with: '11/20/2030'
     fill_in 'CPF', with: '12345678901'
     click_on 'Fazer pagamento'
+    client.reload
 
     expect(Purchase.count).to eq 1
     expect(Purchase.last).to be_approved
+    expect(client.product_items.count).to eq 0
     expect(current_path).to eq feedback_purchase_path(Purchase.last)
     expect(page).to have_content 'Pedido ASDF123456 realizado com sucesso'
     expect(page).to have_content 'Sua compra foi aprovada!'
