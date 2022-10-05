@@ -5,6 +5,8 @@ describe 'client confirm purchase' do
     client = create :client
     product1 = create :product, price: 100
     product2 = create :product, price: 200
+    5.times { create :stock_product, product: product1}
+    5.times { create :stock_product, product: product2}
     item = create :product_item, product: product1, client:, quantity: 1
     item2 = create :product_item, product: product2, client:, quantity: 2
     purchase_data_sent = { transaction: { code: '123', name: 'KILDER COSTA M FILHO', valid_date: '11/20/2030',
@@ -30,6 +32,8 @@ describe 'client confirm purchase' do
     expect(Purchase.count).to eq 1
     expect(Purchase.last).to be_approved
     expect(client.product_items.count).to eq 0
+    expect(product1.stock_products.count).to eq 4
+    expect(product2.stock_products.count).to eq 3
     expect(current_path).to eq feedback_purchase_path(Purchase.last)
     expect(page).to have_content 'Pedido ASDF123456 realizado com sucesso'
     expect(page).to have_content 'Sua compra foi aprovada!'

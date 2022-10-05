@@ -3,7 +3,7 @@ class ProductItemsController < ApplicationController
 
   def create
     product_id = params[:product_id]
-    @item = ProductItem.find_by(product_id:)
+    @item = ProductItem.where(product_id:, client: current_client)
     @stock = StockProduct.where(product_id:)
 
     if @stock&.any?

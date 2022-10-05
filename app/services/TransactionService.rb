@@ -11,6 +11,9 @@ class TransactionService
     if response['status'] == 'accepted'
       purchase.approved!
       purchase.client.product_items.clear
+      purchase.product_items.each do |product_item|
+        product_item.quantity.times { product_item.product.stock_products.last.destroy }
+      end
     end
     purchase.rejected! if response['status'] == 'rejected'
   end
