@@ -2,6 +2,8 @@ class PurchasesController < ApplicationController
   before_action :verify_card, only: :create
 
   def new
+    return redirect_to shopping_cart_path, notice: 'Ops' unless ProductService.stock?(current_client.product_items)
+
     @purchase = Purchase.new
     @card = Card.new
   end
