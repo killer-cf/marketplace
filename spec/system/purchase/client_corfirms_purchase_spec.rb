@@ -184,7 +184,6 @@ describe 'client confirm purchase' do
     client = create :client
     product1 = create :product, price: 100
     product2 = create :product, price: 200
-    create :stock_product, product: product1
     create :stock_product, product: product2
     item = create :product_item, product: product1, client:, quantity: 1
     item2 = create :product_item, product: product2, client:, quantity: 2
@@ -201,20 +200,11 @@ describe 'client confirm purchase' do
     visit shopping_cart_path
     click_on 'Ir para pagamento'
     client.reload
+    item2.reload
 
     expect(current_path).to eq shopping_cart_path
-    expect(page).to have_content 'Ops'
-    #expect(Purchase.count).to eq 1
-    #expect(Purchase.last).to be_approved
-    #expect(client.product_items.count).to eq 0
-    #expect(product1.stock_products.count).to eq 4
-    #expect(product2.stock_products.count).to eq 3
-    #expect(current_path).to eq feedback_purchase_path(Purchase.last)
-    #expect(page).to have_content 'Pedido ASDF123456 realizado com sucesso'
-    #expect(page).to have_content 'Sua compra foi aprovada!'
-    #expect(page).to have_content 'Pago com cartão final 3456'
-    #expect(page).to have_content 'Total do pedido: R$ 500,00'
-    #expect(page).to have_content "1x #{item.product.name}"
-    #expect(page).to have_content "2x #{item2.product.name}"
+    expect(page).to have_content 'Produto ou quantidade indisponivel em estoque, seu carrinho foi atualizado!'
+    expect(client.product_items.count).to eq 1
+    expect(item2.quantity).to eq 1
   end
 end
