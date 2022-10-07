@@ -1,4 +1,4 @@
-<%= form_with model: @purchase do |f| %>
+<%= form_with model: @purchase, data: { turbo: false } do |f| %>
   <%= f.hidden_field :client_id, value: current_client.id %>
   <%= fields_for @card do |c| %>
     <%= c.label :number %>
