@@ -28,7 +28,7 @@
           <% else %>
             <%= link_to 'Entrar', new_client_session_path, class:'text-green-600 hover:text-green-700' %>
           <% end %>
-          <%= link_to 'Carrinho', shopping_cart_path %>
+          <%= link_to('Carrinho', shopping_cart_path) if !admin_signed_in? %>
         </div>
       </nav>
     </header>
