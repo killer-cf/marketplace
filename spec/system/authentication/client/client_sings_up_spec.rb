@@ -13,7 +13,7 @@ describe 'client sings up' do
 
     expect(page).to have_current_path root_path
     expect(page).not_to have_link 'Entrar'
-    expect(page).to have_link 'Sair'
+    expect(page).to have_button 'Sair'
     expect(page).to have_content('Kilder | kilder@example.com')
   end
 

@@ -20,9 +20,9 @@
           <p>Peso: <%= @product.weight %></p>
           <p>Status: <%= Product.human_attribute_name("status.#{@product.status}") %></p>
         </div>
-        <% if @product.inactive? %>
+        <% if @product.inactive? && admin_signed_in? %>
           <div><%= button_to 'Ativar', activate_product_path(@product) %></div>
-        <% else %>
+        <% elsif admin_signed_in? %>
           <div><%= button_to 'Desativar', deactivate_product_path(@product) %></div>
         <% end %>
     <% end %>

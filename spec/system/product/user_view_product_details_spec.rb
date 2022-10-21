@@ -17,6 +17,7 @@ describe 'visitor sees product details' do
     expect(page).to have_content "Peso: #{product.weight}"
     expect(page).to have_content 'R$ 400,00'
     expect(page).not_to have_content "Status: #{product.status}"
+    expect(page).not_to have_button 'Desativar'
   end
 
   it 'and product no exists' do
