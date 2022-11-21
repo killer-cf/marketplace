@@ -6,7 +6,9 @@
           <h2><%=link_to @product.name, @product %> <%= @product.brand %></h2>
           <h4><%= number_to_currency(@product.price, unit: 'R$ ') %></h4>
           <% if @product_stock > 0 && !admin_signed_in? %>
-            <%= button_to 'Adicionar ao carrinho', product_product_items_path(@product.id) %>
+            <%= button_to product_product_items_path(@product.id), class:'space-x-2' do %>
+              <i class="fa-solid fa-cart-plus"></i><span>Adicionar ao carrinho</span>
+            <% end %>
           <% elsif !admin_signed_in? %>
             <div>
               <p>Produto não disponivel</p>

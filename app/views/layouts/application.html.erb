@@ -35,7 +35,11 @@
           <div class='flex space-x-6 items-center'>
               <%= link_to 'Entrar', new_client_session_path, class:'text-green-600 hover:text-green-700' %>
             <% end %>
-            <%= link_to('Carrinho', shopping_cart_path) if !admin_signed_in? %>
+            <% if !admin_signed_in? %>
+              <%= link_to shopping_cart_path, title: 'Carrinho' do %>
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </nav>
