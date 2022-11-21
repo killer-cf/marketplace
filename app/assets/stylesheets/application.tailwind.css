@@ -5,9 +5,6 @@
   .field {
     @apply flex flex-col max-w-[250px];
   }
-  a {
-    @apply no-underline text-blue-700 hover:text-blue-900 font-semibold;
-  }
   .container {
     @apply mx-auto px-[2%] pt-10 w-full;
   }
