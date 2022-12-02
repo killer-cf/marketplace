@@ -7,3 +7,4 @@ worker_processes 4
 timeout 30
 preload_app true
 listen '/tmp/marketplaceapp.sock', backlog: 64
+listen '127.0.0.1:3030'
