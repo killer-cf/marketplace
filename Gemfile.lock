@@ -300,6 +300,7 @@ DEPENDENCIES
   shoulda-matchers
   sprockets-rails
   sqlite3 (~> 1.4)
+  sshkit
   stimulus-rails
   tailwindcss-rails (~> 2.0)
   turbo-rails
