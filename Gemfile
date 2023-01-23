@@ -56,7 +56,7 @@ gem 'faraday'
 
 gem "font-awesome-sass", "~> 6.2.1"
 
-gem 'sshkit'
+gem 'sshkit-sudo'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
